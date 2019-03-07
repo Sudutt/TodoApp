@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1>
+                    <a href='/'>To-Do</a>
+                </h1>
+
+                <h3>Add Task</h3>
+                <form action="/new/" method="POST">
+                    <input type="text" name="brief" placeholder="Task Details"> <br>
+                    <input type="date" name="date"> 
+                    <input type="time" name="time" step="1"> <br>
+                    <button class="btn btn-success" value="Add" type="submit">Add</button>
+                </form>
+                {% if foo %}
+                <div class="alert alert-danger"><strong>Error!</strong> Input Empty passed.</div>
+                {% endif %}
+
+                <hr>
+                <h3>Pending</h3>
+                <div class="todolist not-done">
+                    <table style="width:100%">
+                        {% for post in incomplete %}
+                        <tr>
+                            <th>{{post.deadline}}</th>
+                            <th>{{post.task_brief}}</th>
+                            <form action="/complete/" method="POST">
+                                <input hidden name="id" value="{{post.id}}" />
+                                <th><button class="btn btn-success" value="Complete" type="submit">Mark as
+                                        completed</button>
+                                </th>
+                            </form>
+                            <form action="/delete/" method="POST">
+                                <input hidden name="id" value="{{post.id}}" />
+                                <th><button class="btn btn-success" value="Delete" type="submit">Delete</button>
+                                </th>
+                            </form>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                <hr>
+                <h3>Completed</h3>
+                <div class="todolist done">
+                    <table style="width:100%">
+                        {% for post in complete %}
+                        <tr>
+                            <th><strike>{{post.deadline}}</strike></th>
+                            <th><strike>{{post.task_brief}}</strike></th>
+                            <form action="/delete/" method="POST">
+                                <input hidden name="id" value="{{post.id}}" />
+                                <th><button class="btn btn-success" value="Delete" type="submit">Delete</button>
+                                </th>
+                            </form>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
