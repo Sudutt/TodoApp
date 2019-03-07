@@ -22,6 +22,16 @@ def mark_complete(request):
     return HttpResponseRedirect("/success")
 
 @csrf_exempt
+def mark_incomplete(request):
+    print("hi")
+    i = request.POST.get("id", "")
+    r = Schedule.objects.filter(id=i).get()
+    print(r.id)
+    r.completed=False
+    r.save()
+    return HttpResponseRedirect("/success")
+
+@csrf_exempt
 def delete(request):
     i = request.POST.get("id", "")
     r = Schedule.objects.filter(id=i)

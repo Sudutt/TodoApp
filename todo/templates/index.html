@@ -57,6 +57,12 @@
                         <tr>
                             <th><strike>{{post.deadline}}</strike></th>
                             <th><strike>{{post.task_brief}}</strike></th>
+                            <form action="/incomplete/" method="POST">
+                                <input hidden name="id" value="{{post.id}}" />
+                                <th><button class="btn btn-success" value="Incomplete" type="submit">Mark as
+                                        incomplete</button>
+                                </th>
+                            </form>
                             <form action="/delete/" method="POST">
                                 <input hidden name="id" value="{{post.id}}" />
                                 <th><button class="btn btn-success" value="Delete" type="submit">Delete</button>

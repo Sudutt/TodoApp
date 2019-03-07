@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url
-from todo.views import home, mark_complete, delete, add, failure
+from todo import views as v
 
 urlpatterns = [
-    url(r'^$',home),
-    url('success/',home),
-    url('failure/', failure),
-    url('complete/', mark_complete),
-    url('delete/', delete),
-    url('new/', add),
+    url(r'^$',v.home),
+    url('success/',v.home),
+    url('failure/', v.failure),
+    url(r'^complete/', v.mark_complete),
+    url(r'^incomplete/', v.mark_incomplete),
+    url('delete/', v.delete),
+    url('new/', v.add),
     url('admin/', admin.site.urls),
 ]
