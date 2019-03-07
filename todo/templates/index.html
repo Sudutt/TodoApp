@@ -16,9 +16,13 @@
 
                 <h3>Add Task</h3>
                 <form action="/new/" method="POST">
-                    <input type="text" name="brief" placeholder="Task Details"> <br>
+                    <b>Task :</b>&emsp;&emsp;&emsp13;&emsp13;&emsp14;
+                    <input type="text" name="brief" placeholder="Task Details">
+                    <br>
+                    <b>Deadline :</b>&emsp;
                     <input type="date" name="date"> 
-                    <input type="time" name="time" step="1"> <br>
+                    <input type="time" name="time" step="1"> 
+                    <br>
                     <button class="btn btn-success" value="Add" type="submit">Add</button>
                 </form>
                 {% if foo %}
